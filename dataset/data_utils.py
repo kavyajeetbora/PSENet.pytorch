@@ -183,7 +183,7 @@ class MyDataset(data.Dataset):
                     else:
                         text_tags.append(False)
                     # if label == '*' or label == '###':
-                    x1, y1, x2, y2, x3, y3, x4, y4 = list(map(float, params[:8]))
+                    x1, x2, x3, x4, y1, y2, y3, y4 = list(map(float, params[:8]))
                     boxes.append([[x1, y1], [x2, y2], [x3, y3], [x4, y4]])
                 except:
                     print('load label failed on {}'.format(label_path))
