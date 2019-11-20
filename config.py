@@ -3,8 +3,8 @@
 # @Author  : zhoujun
 
 # data config
-trainroot = '/data2/dataset/ICD15/train'
-testroot = '/data2/dataset/ICD15/test'
+trainroot = '/content/drive/My Drive/Colab Notebooks/padh.ai.notebooks/15. Object Detection/AI4Bharat Dataset/Training Set'
+#testroot = '/data2/dataset/ICD15/test'
 output_dir = 'output/psenet_icd2015_resnet152_4gpu_author_crop_adam_MultiStepLR_authorloss'
 data_shape = 640
 
@@ -12,7 +12,7 @@ data_shape = 640
 gpu_id = '2'
 workers = 12
 start_epoch = 0
-epochs = 600
+epochs = 1
 
 train_batch_size = 4
 
