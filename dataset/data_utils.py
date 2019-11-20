@@ -213,7 +213,7 @@ if __name__ == '__main__':
     train_data = MyDataset(config.trainroot, data_shape=config.data_shape, n=config.n, m=config.m,
                            transform=transforms.ToTensor())
     train_loader = DataLoader(dataset=train_data, batch_size=1, shuffle=False, num_workers=0)
-    print('Total number of training data',len(train_data)
+    print('Total number of training data',len(train_data))
           
     pbar = tqdm(total=len(train_loader))
     for i, (img, label, mask) in enumerate(train_loader):
