@@ -160,9 +160,9 @@ class MyDataset(data.Dataset):
 
     def load_data(self, data_dir: str) -> list:
         data_list = []
-        for x in glob.glob(data_dir + '/img/*.jpg', recursive=True):
+        for x in glob.glob(data_dir + '/Images/imgs/*.jpg', recursive=True):
             d = pathlib.Path(x)
-            label_path = os.path.join(data_dir, 'gt', ('gt_' + str(d.stem) + '.txt'))
+            label_path = os.path.join(data_dir, 'Annotations', (str(d.stem) + '.txt'))
             bboxs, text = self._get_annotation(label_path)
             if len(bboxs) > 0:
                 data_list.append((x, bboxs, text))
@@ -213,7 +213,8 @@ if __name__ == '__main__':
     train_data = MyDataset(config.trainroot, data_shape=config.data_shape, n=config.n, m=config.m,
                            transform=transforms.ToTensor())
     train_loader = DataLoader(dataset=train_data, batch_size=1, shuffle=False, num_workers=0)
-
+    print('Total number of training data',len(train_data)
+          
     pbar = tqdm(total=len(train_loader))
     for i, (img, label, mask) in enumerate(train_loader):
         print(label.shape)
