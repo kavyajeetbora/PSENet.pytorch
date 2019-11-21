@@ -178,9 +178,9 @@ class MyDataset(data.Dataset):
                 params = line.strip().strip('\ufeff').strip('\xef\xbb\xbf').split(' ')
                 try:
                     label = params[8]
-                    if len(label) == 0 or label == '##':
+                    if len(label) == 0 or label == '##': # for ignore text only
                         text_tags.append(True)
-                    else:
+                    else: # where text is detected
                         text_tags.append(False)
                     # if label == '*' or label == '###':
                     x1, x2, x3, x4, y1, y2, y3, y4 = list(map(float, params[:8]))
