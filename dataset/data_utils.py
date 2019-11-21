@@ -178,7 +178,7 @@ class MyDataset(data.Dataset):
                 params = line.strip().strip('\ufeff').strip('\xef\xbb\xbf').split(' ')
                 try:
                     label = params[8]
-                    if len(label) > 0 or label == '##':
+                    if len(label) == 0 or label == '##':
                         text_tags.append(True)
                     else:
                         text_tags.append(False)
