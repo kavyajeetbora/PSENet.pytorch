@@ -3,8 +3,8 @@
 # @Author  : zhoujun
 
 # data config
-trainroot = '/content/drive/My Drive/Colab Notebooks/padh.ai.notebooks/15. Object Detection/AI4Bharat Dataset/Training Set'
-#testroot = '/data2/dataset/ICD15/test'
+trainroot = 'Training Set'
+testroot = 'Test Set'
 output_dir = 'output/psenet_icd2015_resnet152_4gpu_author_crop_adam_MultiStepLR_authorloss'
 data_shape = 640
 
@@ -34,7 +34,7 @@ restart_training = True
 checkpoint = ''
 
 # net config
-backbone = 'resnet152'
+backbone = 'resnet18'
 Lambda = 0.7
 n = 6
 m = 0.5
