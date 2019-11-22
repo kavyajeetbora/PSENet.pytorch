@@ -5,7 +5,7 @@
 # data config
 trainroot = 'Training Set'
 testroot = 'Test Set'
-output_dir = 'output/psenet_icd2015_resnet152_4gpu_author_crop_adam_MultiStepLR_authorloss'
+output_dir = '/content/drive/My Drive'
 data_shape = 640
 
 # train config
