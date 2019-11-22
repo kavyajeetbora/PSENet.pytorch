@@ -5,7 +5,7 @@
 # data config
 trainroot = 'Training Set'
 testroot = 'Test Set'
-output_dir = '/content/drive/My Drive'
+output_dir = '/content/drive/My Drive/PSENet'
 data_shape = 640
 
 # train config
