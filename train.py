@@ -117,7 +117,7 @@ def main():
                            transform=transforms.ToTensor())
     train_loader = Data.DataLoader(dataset=train_data, batch_size=config.train_batch_size, shuffle=True,
                                    num_workers=int(config.workers))
-
+    writer = SummaryWriter(config.output_dir)
     model = PSENet(backbone=config.backbone, pretrained=config.pretrained, result_num=config.n, scale=config.scale)
     if not config.pretrained and not config.restart_training:
         model.apply(weights_init)
@@ -160,6 +160,7 @@ def main():
             if os.path.exists(filename):
                 os.unlink(filename)
             torch.save(state_dict, filename)
+        writer.close()
     except KeyboardInterrupt:
         save_checkpoint('{}/final.pth'.format(config.output_dir), model, optimizer, epoch, logger)
 
