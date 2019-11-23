@@ -111,8 +111,8 @@ if __name__ == '__main__':
     Labels = os.listdir(annotation_root)
     image_id = Images[np.random.randint(1,len(Images)+1)].split('.jpg')[0]
     
-    img_path = 'image_root+'os.sep'+{}.jpg'.format(image_id)
-    label_path = 'annotation_root+os.sep+{}.txt'.format(image_id)
+    img_path = 'image_root/{}.jpg'.format(image_id)
+    label_path = 'annotation_root/{}.txt'.format(image_id)
     label = _get_annotation(label_path)
 
     # 初始化网络
