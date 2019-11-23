@@ -6,6 +6,7 @@
 trainroot = 'Training Set'
 testroot = 'Test Set'
 output_dir = '/content/drive/My Drive/PSENet'
+pretrained_path = '/content/drive/My Drive/PSENet/PSENet_resnet18.pth'
 data_shape = 640
 
 # train config
