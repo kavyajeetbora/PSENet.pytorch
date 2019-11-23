@@ -101,16 +101,22 @@ if __name__ == '__main__':
 
     os.environ['CUDA_VISIBLE_DEVICES'] = str('2')
 
-    model_path = 'output/psenet_icd2015_resnet152_author_crop_adam_warm_up_myloss/best_r0.714011_p0.708214_f10.711100.pth'
+    model_path = '/content/drive/My Drive/PSENet/PSENet_resnet18.pth'
 
     # model_path = 'output/psenet_icd2015_new_loss/final.pth'
-    img_id = 10
-    img_path = '/data2/dataset/ICD15/test/img/img_{}.jpg'.format(img_id)
-    label_path = '/data2/dataset/ICD15/test/gt/gt_img_{}.txt'.format(img_id)
+    image_root = 'Test Set/Images'
+    annotation_root = 'Test Set/Annotations'
+    
+    Images = os.listdir(image_root)
+    Labels = os.listdir(annotation_root)
+    image_id = Images[np.random.randint(1,len(Images)+1)].split('.jpg')[0]
+    
+    img_path = 'image_root+'os.sep'+{}.jpg'.format(image_id)
+    label_path = 'annotation_root+os.sep+{}.txt'.format(image_id)
     label = _get_annotation(label_path)
 
     # 初始化网络
-    net = PSENet(backbone='resnet152', pretrained=False, result_num=config.n)
+    net = PSENet(backbone='resnet18', pretrained=False, result_num=config.n)
     model = Pytorch_model(model_path, net=net, scale=1, gpu_id=0)
     # for i in range(100):
     #     models.predict(img_path)
