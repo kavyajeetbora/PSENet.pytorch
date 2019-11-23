@@ -104,15 +104,15 @@ if __name__ == '__main__':
     model_path = '/content/drive/My Drive/PSENet/PSENet_resnet18.pth'
 
     # model_path = 'output/psenet_icd2015_new_loss/final.pth'
-    image_root = 'Test Set/Images'
-    annotation_root = 'Test Set/Annotations'
+    image_root = 'Test Set/Image'
+    annotation_root = 'Test Set/Annotation'
     
     Images = os.listdir(image_root)
     Labels = os.listdir(annotation_root)
     image_id = Images[np.random.randint(1,len(Images)+1)].split('.jpg')[0]
     
-    img_path = 'image_root/{}.jpg'.format(image_id)
-    label_path = 'annotation_root/{}.txt'.format(image_id)
+    img_path = image_root+os.sep+'{}.jpg'.format(image_id)
+    label_path = annotation_root+os.sep+'{}.txt'.format(image_id)
     label = _get_annotation(label_path)
 
     # 初始化网络
