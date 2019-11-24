@@ -104,8 +104,8 @@ if __name__ == '__main__':
 
     # 初始化网络
     net = PSENet(backbone='resnet18', pretrained=False, result_num=config.n)
-    torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    model = Pytorch_model(model_path, net=net, scale=1, device)
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    model = Pytorch_model(model_path, net=net, scale=1, device=device)
     # for i in range(100):
     #     models.predict(img_path)
     preds, boxes_list,t = model.predict(img_path)
