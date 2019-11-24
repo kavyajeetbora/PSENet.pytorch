@@ -25,7 +25,8 @@ class Pytorch_model:
             self.device = torch.device("cuda:{}".format(gpu_id))
         else:
             self.device = torch.device("cpu")
-        self.net = torch.load(model_path, map_location=self.device)['state_dict']
+        state_dict = torch.load(model_path, map_location=self.device)
+        self.net = torch.load_state_dict(state_dict)
         print('device:', self.device)
 
         if net is not None:
