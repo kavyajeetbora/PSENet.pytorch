@@ -12,7 +12,7 @@ from pse import decode as pse_decode
 
 
 class Pytorch_model:
-    def __init__(self, model_path, net, scale, gpu_id=None):
+    def __init__(self, model_path, net, scale, device):
         '''
         初始化pytorch模型
         :param model_path: 模型地址(可以是模型的参数或者参数和计算图一起保存的文件)
@@ -21,10 +21,8 @@ class Pytorch_model:
         :param gpu_id: 在哪一块gpu上运行
         '''
         self.scale = scale
-        if gpu_id is not None and isinstance(gpu_id, int) and torch.cuda.is_available():
-            self.device = torch.device("cuda:{}".format(gpu_id))
-        else:
-            self.device = torch.device("cpu")
+        self.device = device
+        
         state_dict = torch.load(model_path, map_location=self.device)
         self.net = net.load_state_dict(state_dict)
         print('device:', self.device)
@@ -106,7 +104,8 @@ if __name__ == '__main__':
 
     # 初始化网络
     net = PSENet(backbone='resnet18', pretrained=False, result_num=config.n)
-    model = Pytorch_model(model_path, net=net, scale=1, gpu_id=0)
+    torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    model = Pytorch_model(model_path, net=net, scale=1, device)
     # for i in range(100):
     #     models.predict(img_path)
     preds, boxes_list,t = model.predict(img_path)
