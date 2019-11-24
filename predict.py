@@ -29,21 +29,6 @@ class Pytorch_model:
         self.net = net.load_state_dict(state_dict)
         print('device:', self.device)
 
-        if net is not None:
-            # 如果网络计算图和参数是分开保存的，就执行参数加载
-            net = net.to(self.device)
-            net.scale = scale
-            try:
-                sk = {}
-                for k in self.net:
-                    sk[k[7:]] = self.net[k]
-                net.load_state_dict(sk)
-            except:
-                net.load_state_dict(self.net)
-            self.net = net
-            print('load models')
-        self.net.eval()
-
     def predict(self, img: str, long_size: int = 2240):
         '''
         对传入的图像进行预测，支持图像地址,opecv 读取图片，偏慢
@@ -114,6 +99,9 @@ if __name__ == '__main__':
     
     img_path = image_root+os.sep+'{}.jpg'.format(image_id)
     label_path = annotation_root+os.sep+'{}.txt'.format(image_id)
+    
+    print('Predicting for image',img_path)
+    
     label = _get_annotation(label_path)
 
     # 初始化网络
