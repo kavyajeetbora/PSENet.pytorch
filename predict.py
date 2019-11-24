@@ -26,7 +26,7 @@ class Pytorch_model:
         else:
             self.device = torch.device("cpu")
         state_dict = torch.load(model_path, map_location=self.device)
-        self.net.load_state_dict(state_dict)
+        self.net = net.load_state_dict(state_dict)
         print('device:', self.device)
 
         if net is not None:
