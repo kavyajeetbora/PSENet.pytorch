@@ -116,7 +116,7 @@ def main():
     train_data = MyDataset(config.trainroot, data_shape=config.data_shape, n=config.n, m=config.m,
                            transform=transforms.ToTensor())
     train_loader = Data.DataLoader(dataset=train_data, batch_size=config.train_batch_size, shuffle=True,
-                                   num_workers=int(config.workers))
+                                   num_workers=int(config.workers), drop_last=True)
     writer = SummaryWriter(config.output_dir)
     model = PSENet(backbone=config.backbone, pretrained=config.pretrained, result_num=config.n, scale=config.scale)
     if not config.pretrained and not config.restart_training:
