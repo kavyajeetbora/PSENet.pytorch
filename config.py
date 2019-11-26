@@ -5,15 +5,15 @@
 # data config
 trainroot = 'Training Set'
 testroot = 'Test Set'
-output_dir = '/content/drive/My Drive/PSENet'
-pretrained_path = '/content/drive/My Drive/PSENet/PSENet_resnet18.pth'
+output_dir = '/content/drive/My Drive/PSENet_2'
+pretrained_path = '/content/drive/My Drive/PSENet_2/PSENet_resnet50.pth'
 data_shape = 640
 
 # train config
 gpu_id = '0'
 workers = 12
 start_epoch = 0
-epochs = 10
+epochs = 50
 
 train_batch_size = 4
 
@@ -31,11 +31,11 @@ display_interval = 10
 show_images_interval = 50
 
 pretrained = False
-restart_training = False
+restart_training = True
 checkpoint = ''
 
 # net config
-backbone = 'resnet18'
+backbone = 'resnet50'
 Lambda = 0.7
 n = 6
 m = 0.5
