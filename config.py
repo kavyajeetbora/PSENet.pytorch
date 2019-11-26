@@ -30,8 +30,8 @@ display_output_images = False
 display_interval = 10
 show_images_interval = 50
 
-pretrained = True
-restart_training = True
+pretrained = False
+restart_training = False
 checkpoint = ''
 
 # net config
