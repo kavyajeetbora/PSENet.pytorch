@@ -175,7 +175,7 @@ class MyDataset(data.Dataset):
         text_tags = []
         with open(label_path, encoding='utf-8', mode='r') as f:
             for line in f.readlines():
-                params = line.strip().strip('\ufeff').strip('\xef\xbb\xbf').split(' ')
+                params = line.strip().strip('\ufeff').strip('\xef\xbb\xbf').split(config.data_separator)
                 try:
                     label = params[8]
                     if len(label) == 0 or label == '##': # for ignore text only
