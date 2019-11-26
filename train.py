@@ -122,8 +122,8 @@ def main():
     if not config.pretrained and not config.restart_training:
         model.apply(weights_init)
     ## loading the pretrained weights from drive
-    state_dict = torch.load(config.pretrained_path)
-    model.load_state_dict(state_dict)
+#     state_dict = torch.load(config.pretrained_path)
+#     model.load_state_dict(state_dict)
     
     num_gpus = torch.cuda.device_count()
     if num_gpus > 1:
