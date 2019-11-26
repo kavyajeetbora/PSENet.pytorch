@@ -136,13 +136,14 @@ def image_label(im_fn: str, text_polys: np.ndarray, text_tags: list, n: int, m: 
 
 
 class MyDataset(data.Dataset):
-    def __init__(self, data_dir, data_shape: int = 640, n=6, m=0.5, transform=None, target_transform=None):
+    def __init__(self, data_dir, data_shape: int = 640, n=6, m=0.5, transform=None, target_transform=None, separator=' '):
         self.data_list = self.load_data(data_dir)
         self.data_shape = data_shape
         self.transform = transform
         self.target_transform = target_transform
         self.n = n
         self.m = m
+        self.separator = separator
 
     def __getitem__(self, index):
         # print(self.image_list[index])
@@ -175,7 +176,7 @@ class MyDataset(data.Dataset):
         text_tags = []
         with open(label_path, encoding='utf-8', mode='r') as f:
             for line in f.readlines():
-                params = line.strip().strip('\ufeff').strip('\xef\xbb\xbf').split(config.data_separator)
+                params = line.strip().strip('\ufeff').strip('\xef\xbb\xbf').split(self.separator)
                 try:
                     label = params[8]
                     if len(label) == 0 or label == '##': # for ignore text only
@@ -211,7 +212,7 @@ if __name__ == '__main__':
     from torchvision import transforms
 
     train_data = MyDataset(config.trainroot, data_shape=config.data_shape, n=config.n, m=config.m,
-                           transform=transforms.ToTensor())
+                           transform=transforms.ToTensor(), separator = config.data_separator)
     train_loader = DataLoader(dataset=train_data, batch_size=1, shuffle=False, num_workers=0)
     print('Total number of training data',len(train_data))
           
