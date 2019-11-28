@@ -13,14 +13,14 @@ data_shape = 640
 gpu_id = '0'
 workers = 12
 start_epoch = 0
-epochs = 300
+epochs = 150
 
 train_batch_size = 4
 
-lr = 1e-4
+lr = 1e-5
 end_lr = 1e-7
 lr_gamma = 0.1
-lr_decay_step = [100,200]
+lr_decay_step = [50,100]
 weight_decay = 5e-4
 warm_up_epoch = 6
 warm_up_lr = lr * lr_gamma
