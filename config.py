@@ -17,10 +17,10 @@ epochs = 150
 
 train_batch_size = 4
 
-lr = 1e-5
-end_lr = 1e-7
+lr = 1e-4
+end_lr = 1e-6
 lr_gamma = 0.1
-lr_decay_step = [50,100]
+lr_decay_step = [100,200]
 weight_decay = 5e-4
 warm_up_epoch = 6
 warm_up_lr = lr * lr_gamma
