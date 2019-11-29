@@ -177,8 +177,8 @@ class MyDataset(data.Dataset):
             for line in f.readlines():
                 params = line.strip().strip('\ufeff').strip('\xef\xbb\xbf').split(',')
                 try:
-                    label = params[8]
-                    if len(label) == 0 or '##' in line: # for ignore text only
+                    label = params[9]
+                    if len(label) == 0 or '##' in line or label == '*' or label == '###': # for ignore text only
                         text_tags.append(True)
                     else: # where text is detected
                         text_tags.append(False)
