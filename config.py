@@ -11,7 +11,7 @@ data_shape = 640
 
 # train config
 gpu_id = '0'
-workers = 12
+workers = 0
 start_epoch = 0
 epochs = 300
 
