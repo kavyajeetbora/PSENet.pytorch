@@ -165,6 +165,11 @@ def main():
             torch.save(state_dict, filename)
         writer.close()
     except KeyboardInterrupt:
+        filename = '{}/PSENet_resnet50.pth'.format(config.output_dir)
+        if os.path.exists(filename):
+            os.unlink(filename)
+        torch.save(state_dict, filename)
+        
         save_checkpoint('{}/final.pth'.format(config.output_dir), model, optimizer, epoch, logger)
 
 
