@@ -17,7 +17,7 @@ epochs = 300
 
 train_batch_size = 4
 
-lr = 0.5e-5
+lr = 1e-6
 end_lr = 1e-6
 lr_gamma = 0.1
 lr_decay_step = [100,200]
